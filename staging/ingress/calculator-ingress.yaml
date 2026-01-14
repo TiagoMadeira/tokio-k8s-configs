@@ -13,4 +13,14 @@ spec:
           service:
             name: rest-internal-service
             port: 
-              number: 8080
+              number: 8000
+  ingressClassName: nginx
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata: 
+  name: nginx
+spec:
+  controller: k8s.io/ingress-nginx

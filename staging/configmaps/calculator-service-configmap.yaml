@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: rest-service-configmap
+  name: calculator-service-configmap
 data:
-  calculator_service_url:  http://calculator-internal-service.default.svc.cluster.local:8001
-  otel-service-name: rest-service
+  otel-service-name: calculator-service
   otel-exporter-insecure: "true"
   otel-exporter-endpoint: http://jaeger.observability.svc.cluster.local:4317
   otel-metrics-exporter: none
