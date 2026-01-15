@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: calculator-service-configmap
+data:
+  otel-service-name: calculator-service
+  otel-exporter-insecure: "true"
+  otel-exporter-endpoint: http://jaeger.observability.svc.cluster.local:4317
+  otel-metrics-exporter: none
+  otel-logs-exporter: none
