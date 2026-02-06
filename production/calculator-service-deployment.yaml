@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: calculator-service-deployment
-    namespace: prodcution
+    namespace: production
     labels:
       app:  calculator-service
 spec:
@@ -24,7 +24,7 @@ spec:
             cpu: "1"
           requests:
             memory: 256Mi
-            cpu: "0.2"
+            cpu: "0.1"
         ports:
           - name: http
             containerPort: 8000

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: calculator-service
-        image: tiagomadeiradock/tokio-calculator-service:0286a9c
+        image: tiagomadeiradock/tokio-calculator-service:81a3a2f
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -24,7 +24,7 @@ spec:
             cpu: "1"
           requests:
             memory: 256Mi
-            cpu: "0.2"
+            cpu: "0.1"
         ports:
           - name: http
             containerPort: 8000
