@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: calculator-service-deployment
+    namespace: staging
     labels:
       app:  calculator-service
 spec:
@@ -65,6 +66,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: calculator-internal-service
+  namespace: staging
 spec:
   selector:
     app: calculator-service
