@@ -4,7 +4,7 @@ metadata:
   name: calculator-service-configmap
   namespace: development
 data:
-  otel-service-name: calculator-service
+  otel-service-name: development-calculator-service
   otel-exporter-insecure: "true"
   otel-exporter-endpoint: http://jaeger.observability.svc.cluster.local:4317
   otel-metrics-exporter: none
