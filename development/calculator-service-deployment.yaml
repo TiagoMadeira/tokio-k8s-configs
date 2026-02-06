@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: calculator-service-deployment
+    namespace: development
+    labels:
+      app:  calculator-service
+spec:
+  selector:
+    matchLabels:
+      app: calculator-service
+  template:
+    metadata:
+      labels:
+        app: calculator-service
+    spec:
+      containers:
+      - name: calculator-service
+        image: tiagomadeiradock/tokio-calculator-service:0286a9c
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+        ports:
+          - name: http
+            containerPort: 8000
+        env:
+          - name: OTEL_SERVICE_NAME
+            valueFrom:
+             configMapKeyRef:
+                name: calculator-service-configmap
+                key: otel-service-name
+
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            valueFrom:
+             configMapKeyRef:
+                name: calculator-service-configmap
+                key: otel-exporter-endpoint
+          
+          - name: OTEL_EXPORTER_OTLP_INSECURE 
+            valueFrom:
+             configMapKeyRef:
+                name: calculator-service-configmap
+                key: otel-exporter-insecure
+
+          - name: OTEL_METRICS_EXPORTER
+            valueFrom:
+             configMapKeyRef:
+                name: calculator-service-configmap
+                key: otel-metrics-exporter
+
+          - name: OTEL_LOGS_EXPORTER
+            valueFrom:
+             configMapKeyRef:
+                name: calculator-service-configmap
+                key: otel-logs-exporter
+      imagePullSecrets:
+      - name: regcred
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator-internal-service
+spec:
+  selector:
+    app: calculator-service
+  type: ClusterIP
+  ports:
+    - port: 8001
+      targetPort: http
