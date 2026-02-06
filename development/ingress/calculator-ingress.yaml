@@ -5,7 +5,7 @@ metadata:
   namespace: development
 spec:
   rules:
-  - host: calculator.com
+  - host: development.calculator.com
     http:
       paths:
       - pathType: Prefix
