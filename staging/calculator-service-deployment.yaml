@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: calculator-service
-        image: tiagomadeiradock/tokio-calculator-service:81a3a2f
+        image: tiagomadeiradock/tokio-calculator-service:da8286d
         imagePullPolicy: IfNotPresent
         resources:
           limits:
